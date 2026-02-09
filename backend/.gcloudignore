@@ -1,0 +1,10 @@
+# Ignore dev/test files
+venv/
+__pycache__/
+*.pyc
+.git/
+.vscode/
+.env
+*.bak
+archived/
+docs/

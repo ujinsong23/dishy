@@ -1,0 +1,81 @@
+
+You are given a single input image that is a collage of approximately 10 photos from Google Maps reviews.
+Some images may depict the target menu item; others may show different dishes, drinks, interiors, exteriors, or unrelated content.
+
+You are also given:
+
+* Menu name: {name}
+* Menu description from the menu board: {description}
+* Appearance description based on the reviews: {appearance}
+* Ingredients list: {ingredients_list}
+
+Your task is governed by the following **strict execution rules**.
+
+---
+
+## Phase 1 — Reference Image Determination (Mandatory)
+
+Analyze each sub-image in the collage and determine whether **at least one image plausibly represents the target menu item**, based strictly on:
+
+* Visual consistency with the ingredients
+* Preparation style implied by the description
+* Realistic customer-uploaded food photos
+
+Explicitly reject images that are:
+
+* Different menu items
+* Generic food photos
+* Drinks, interiors, exteriors, menus, packaging, or tables
+* Promotional, stylized, or unrelated images
+
+Do not assume a match exists.
+
+---
+
+## Hard Gate: No-Reference Condition
+
+If **no image clearly or plausibly represents the target menu item**:
+
+* **Output ONLY the exact text:**
+`no reference image found`
+* **Do NOT generate any image**
+* **Do NOT include explanations, reasoning, or additional text**
+
+This is a terminal condition. Stop immediately.
+
+---
+
+## Phase 2 — Canonical Menu Image Generation (Only if Phase 1 Passes)
+
+Using **only** the image(s) you determined to be valid references and the provided menu text:
+
+Generate **ONE canonical menu image** that represents how this menu item is most commonly and realistically served.
+
+Strict constraints:
+* Base the appearance strictly on the selected reference images, including plating style, orientation, container type, and all utensil or serving implements (e.g., skewers, picks, wrappers, bowls), preserving their layout, positioning, and orientation as observed
+* The generated dish must be shown from a slightly elevated, oblique viewpoint, positioned between a direct top-down view and a straight-on front view, with the entire dish fully visible and uncropped.
+* Ingredient quantities, proportions, and spatial distribution (including sauces, toppings, and fillings) must match the dominant and consistent pattern observed across the selected reference images
+* The generated dish must appear as a single, non-repeating instance; do NOT replicate, tile, mirror, or echo any visual elements observed across multiple reference images.
+* Do NOT invent ingredients, garnishes, sides, plating, containers, or textures
+* Do NOT idealize, beautify, or stylize beyond real evidence
+* Do NOT add branding, logos, text, watermarks, or decorations
+* Do NOT preserve or reflect repeated patterns caused by the collage layout; treat reference images as independent observations, not a composite scene.
+
+
+Visual requirements:
+
+* **Pure white background (#FFFFFF)** with no texture, gradient, shadow, checkerboard, or surface
+* Dish is **cleanly cut out with sharp, accurate edges** and no background color bleed
+* Lighting affects **only the dish**, not the background
+* Normalize orientation and framing if reference images are rotated, tilted, or partially cropped; do NOT reproduce those camera artifacts in the final image.
+
+If multiple reference images vary, synthesize the **most common and consistent appearance**, not the most attractive one.
+
+---
+
+## Output Rules (Strict)
+
+* If Phase 1 fails: output **text only**
+* If Phase 1 succeeds: output **only the generated image**
+* Never output both text and image together
+* Never explain your reasoning

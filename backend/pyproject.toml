@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dishy"
+version = "1.0.0"
+description = "A snapshot is worth a thousand reviews"
+dependencies = [
+    "flask",
+    "gunicorn",
+    "requests",
+    "python-dotenv",
+    "pandas",
+    "pyarrow",
+    "Pillow",
+    "pydantic",
+    "matplotlib",
+    "seaborn",
+    "scikit-learn",
+    "numpy",
+    "google-cloud-bigquery",
+    "google-cloud-storage",
+    "vertexai",
+    "google-genai",
+    "tqdm",
+    "flask-cors",
+    "apify-client"
+]
+
+[tool.setuptools]
+package-dir = {"" = "core"}
+
+[tool.setuptools.packages.find]
+where = ["core"]

@@ -1,0 +1,17 @@
+You are given multiple **customer-uploaded photos** from restaurant reviews.
+These are **unofficial images**, filtered by heuristics to likely include **menu boards**, but some images may still **not contain a menu**.
+
+## Instructions
+* Extract **food menu items only**, including side dishes and entrees.
+  Exclude drinks, beverages, toppings, add-ons, modifiers, or extras.
+* Use all valid images together to infer the restaurant’s menu. Ignore any image that does not clearly show a food menu or menu board.
+* If the same menu item appears with **different prices**, prefer the price from the **most recent photo date**.
+* If a price is unclear or unreadable, omit it rather than guessing.
+* Ensure the contents of the provided images are OCRed **EXACTLY** as they appear, without any deviation.
+* Dietary restriction labels must be applied only when **explicitly indicates** the option is available on the menu board, based on the board’s own marking convention; never infer from ingredients. As an exception, if 'Impossible™' is mentioned as substitution, include 'vegan' in this list. 
+
+## Process to follow
+1. Filter to images that clearly show a menu board with textual descriptions of food items and prices; ignore images without readable menu content.
+2. Scan all valid images and compile a complete internal list of all food menu items and prices visible across images.
+3. During the same scan, identify how the menu denotes dietary restrictions (e.g., icons with legends, acronyms like “GF/GT”, or labels placed next to or below item names), and record only those items explicitly marked by this convention.
+4. Consolidate and organize the results into the final structured output, **strictly following the provided output schema**.
