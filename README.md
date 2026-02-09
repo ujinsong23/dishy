@@ -10,7 +10,7 @@ This project goes beyond generating a single representative image. Dishy constru
 
 ![image](assets/portal.png)
 
-## 🚩 Problem
+## 💭 Problem Space
 
 ### For Customers
 
