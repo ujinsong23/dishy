@@ -1,0 +1,43 @@
+steps:
+  # Build the Docker image (passes NEXT_PUBLIC_BACKEND_URL as build arg for Next.js inlining)
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      [
+        "build",
+        "--build-arg",
+        "NEXT_PUBLIC_BACKEND_URL=${_NEXT_PUBLIC_BACKEND_URL}",
+        "-t",
+        "gcr.io/$PROJECT_ID/${_SERVICE_NAME}:$COMMIT_SHA",
+        ".",
+      ]
+
+  # Push to Container Registry
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["push", "gcr.io/$PROJECT_ID/${_SERVICE_NAME}:$COMMIT_SHA"]
+
+  # Deploy to Cloud Run
+  - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+    entrypoint: gcloud
+    args:
+      - "run"
+      - "deploy"
+      - "${_SERVICE_NAME}"
+      - "--image"
+      - "gcr.io/$PROJECT_ID/${_SERVICE_NAME}:$COMMIT_SHA"
+      - "--region"
+      - "${_REGION}"
+      - "--platform"
+      - "managed"
+      - "--allow-unauthenticated"
+      - "--port"
+      - "8080"
+      - "--set-env-vars"
+      - "NEXT_PUBLIC_BACKEND_URL=${_NEXT_PUBLIC_BACKEND_URL},BACKEND_URL=${_NEXT_PUBLIC_BACKEND_URL}"
+
+substitutions:
+  _SERVICE_NAME: mm-menu-review-unifier-frontend
+  _REGION: us-central1
+  _NEXT_PUBLIC_BACKEND_URL: ""
+
+images:
+  - "gcr.io/$PROJECT_ID/${_SERVICE_NAME}:$COMMIT_SHA"

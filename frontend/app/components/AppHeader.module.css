@@ -1,0 +1,35 @@
+.header {
+  width: 100%;
+  height: 60px;
+  padding: 18px 48px;
+  margin-bottom: 0;
+  flex-shrink: 0;
+  background-color: #fffcf4;
+  display: flex;
+  align-items: center;
+}
+
+.headerInner {
+  max-width: 90rem;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+.headerBrand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.headerLogo {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+.headerTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--foreground);
+}

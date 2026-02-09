@@ -1,0 +1,538 @@
+/* Core Layout */
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  flex: 1;
+  min-height: 0;
+  padding: 2rem 1.5rem;
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+.mainProgress {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  flex: 1;
+  min-height: 0;
+  padding: 0.5rem 1.5rem 2rem;
+  background-color: #fffcf4;
+  color: var(--foreground);
+}
+
+/* Error state */
+.errorHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--destructive);
+  margin-bottom: 1rem;
+}
+
+.errorHeaderIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+}
+
+.errorTitle {
+  font-weight: 500;
+}
+
+.errorMessage {
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+  margin-bottom: 1.5rem;
+}
+
+.progressSection {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+  width: 100%;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
+.progressSectionLeft {
+  flex-shrink: 0;
+}
+
+.progressIcon {
+  width: 48px;
+  height: 48px;
+  display: block;
+}
+
+.progressSectionRight {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 0;
+}
+
+.title {
+  font-family: var(--font-dm-sans);
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 0;
+  color: #000000;
+}
+
+.titleSparkle {
+  flex-shrink: 0;
+}
+
+.progressWrap {
+  width: 100%;
+  min-width: 0;
+}
+
+.progressBar {
+  height: 0.75rem;
+  width: 100%;
+  background: rgba(23, 23, 23, 0.2);
+  overflow: hidden;
+}
+
+.progressBar :global([data-slot="progress-indicator"]) {
+  border-radius: var(--rounded-full, 9999px) 0 0 var(--rounded-full, 9999px);
+  background: linear-gradient(71deg, #abd0f8 0%, #aed1f4 35%, #fad87d 111.66%);
+}
+
+.subtitle {
+  margin-bottom: 0;
+}
+
+.reviewArea {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+/* ── Vertical review ticker ── */
+
+.tickerViewport {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  overflow: hidden;
+  padding-top: 10px;
+}
+
+.carouselCard {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+/* Soft loading-shimmer overlay */
+.shimmerOverlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: 8px;
+  background: linear-gradient(
+    110deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.45) 50%,
+    transparent 70%
+  );
+  background-size: 250% 100%;
+  animation: shimmerSlide 2.8s ease-in-out infinite;
+}
+
+@keyframes shimmerSlide {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Review card tweaks while in loading state */
+.loadingReviewCard {
+  opacity: 0.92;
+}
+
+.reviewCard {
+  border: 1px solid var(--input);
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  background-color: var(--card);
+}
+
+.reviewCardContent {
+  padding: 1.25rem;
+}
+
+.reviewCardText {
+  font-size: 0.875rem;
+  color: #000000;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.fallbackSpinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.fallbackSpinnerIcon {
+  width: 2.5rem;
+  height: 2.5rem;
+  color: var(--muted-foreground);
+  animation: processPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes processPulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+.contentWrapper {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+}
+
+.contentWrapperWide {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
+/* Header */
+.subtitle {
+  font-size: 0.75rem;
+  color: #666666;
+}
+
+/* Loading States */
+.statusArea {
+  width: 100%;
+  min-height: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.statusMessageContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.centerGraphic {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background: transparent;
+}
+
+.loadingAnimationGif {
+  width: 600px;
+  height: 431px;
+  aspect-ratio: 71 / 51;
+  max-width: 100%;
+  object-fit: contain;
+  background: transparent;
+}
+
+.circle {
+  width: 120px;
+  height: 120px;
+  background-color: #f3f4f6;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hourglass {
+  width: 40px;
+  height: 40px;
+  color: #999999;
+}
+
+/* Results View Header (Still used for specific spacing/typography) */
+.resultsView {
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.topNav {
+  margin-bottom: 2rem;
+}
+
+.backButton {
+  padding: 0;
+  height: auto;
+  font-weight: 400;
+  gap: 0.25rem;
+}
+
+.backButton:hover {
+  background-color: transparent;
+}
+
+.filterGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.toggleGroupDietary {
+  gap: 0.5rem;
+}
+
+.viewHeader {
+  margin-bottom: 3rem;
+}
+
+.viewTitle {
+  font-size: 2rem;
+  font-weight: 400;
+  color: #000000;
+  margin-bottom: 0.5rem;
+}
+
+.viewSubtitle {
+  font-size: 1rem;
+  color: var(--muted-foreground);
+  font-weight: 400;
+}
+
+/* ResultsView filters & grid */
+.filtersRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  width: 100%;
+}
+
+.searchWrap {
+  flex: 1;
+  min-width: 300px;
+}
+
+.searchInputWrap {
+  position: relative;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1rem;
+  height: 1rem;
+  color: var(--muted-foreground);
+  transition: color 0.2s;
+}
+
+.searchInputWrap:focus-within .searchIcon {
+  color: var(--foreground);
+}
+
+.searchInput {
+  padding-left: 2.5rem;
+  height: 2.75rem;
+  border-radius: 0;
+  border: 1px solid var(--input);
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: var(--foreground);
+  box-shadow: none;
+}
+
+.filterLabel {
+  font-size: 0.625rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--foreground);
+  margin-bottom: 0.75rem;
+}
+
+.toggleGroup {
+  border: 1px solid var(--foreground);
+  border-radius: 0;
+  gap: 0;
+}
+
+.toggleItem {
+  height: 2.25rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  border-radius: 0;
+  border-right: 1px solid var(--foreground);
+}
+
+.toggleItem:last-child {
+  border-right: none;
+}
+
+.toggleItemPrice[data-state="on"] {
+  background-color: oklch(0.2 0.05 250);
+  color: white;
+}
+
+.toggleItemDietary[data-state="on"] {
+  background-color: var(--foreground);
+  color: var(--background);
+}
+
+.toggleItemView[data-state="on"] {
+  background-color: var(--muted);
+  color: var(--foreground);
+}
+
+.toggleItem:hover {
+  background-color: var(--muted);
+}
+
+.resultsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem 2rem;
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .resultsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .resultsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1280px) {
+  .resultsGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.resultsList {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+}
+
+.cardLink {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.cardImageWrap {
+  width: 100%;
+  aspect-ratio: 1;
+  background-color: var(--muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.cardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cardImagePlaceholder {
+  width: 4rem;
+  height: 4rem;
+  color: var(--muted-foreground);
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.cardTitle {
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.cardLink:hover .cardTitle {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.cardDesc {
+  font-size: 0.875rem;
+  line-clamp: 2;
+  line-height: 1.5;
+  color: var(--foreground);
+}
+
+.cardBadges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.cardBadge {
+  border-radius: 9999px;
+  font-weight: 400;
+  border: 1px solid var(--border);
+  padding: 0.125rem 0.75rem;
+}
+
+.successMessage {
+  font-size: 0.875rem;
+  color: #000000;
+  text-align: center;
+}
+
+.nextStepMessage {
+  font-size: 0.875rem;
+  text-align: center;
+}

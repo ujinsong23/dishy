@@ -1,0 +1,27 @@
+# dependencies
+node_modules
+
+# build output
+.next
+
+# git
+.git
+.gitignore
+
+# environment (secrets – injected via build args instead)
+.env
+.env.*
+
+# IDE / OS
+.vscode
+.cursor
+.idea
+*.swp
+.DS_Store
+
+# deployment scripts (not needed inside the image)
+deploy.sh
+cloudbuild.yaml
+Dockerfile
+
+materials/

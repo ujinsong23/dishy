@@ -1,0 +1,1174 @@
+/* Detail page layout */
+.page {
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: #fffcf4;
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  padding-bottom: 6rem;
+  overflow-x: hidden;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.wrapper {
+  max-width: 90rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 3rem 0.5rem 2rem;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-top: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.headerIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--muted-foreground);
+}
+
+.headerLogo {
+  height: 1.75rem;
+  width: auto;
+  display: block;
+}
+
+.headerTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--foreground);
+}
+
+/* Empty / not found state */
+.emptyState {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  text-align: center;
+  background-color: #fffcf4;
+}
+
+.emptyTitle {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.emptyMessage {
+  color: var(--muted-foreground);
+  margin-bottom: 2rem;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.875rem;
+  color: var(--foreground);
+  margin-bottom: 3rem;
+}
+
+.breadcrumbChevron {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-lg, 10px);
+  border: var(--border, 1px) solid var(--border, #e5e5e5);
+  background: var(--background, #fff);
+  cursor: pointer;
+}
+
+.breadcrumbChevron:hover {
+  background-color: var(--accent);
+}
+
+.chevronIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.breadcrumbRestaurant {
+  color: var(--muted-foreground);
+  font-weight: 400;
+}
+
+.breadcrumbSep {
+  color: var(--muted-foreground);
+}
+
+.breadcrumbCurrent {
+  font-weight: 500;
+  color: var(--foreground);
+}
+
+/* Two-column layout */
+.twoCol {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+@media (min-width: 1024px) {
+  .twoCol {
+    grid-template-columns: 580px minmax(0, 1fr);
+    gap: 4rem;
+  }
+}
+
+/* Left column */
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Dish image section */
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.sectionTitle {
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+.sectionIcon {
+  color: #eab308;
+  width: 1rem;
+  height: 1rem;
+}
+
+.imageWrap {
+  width: 580px;
+  max-width: 100%;
+  aspect-ratio: 1;
+  background-color: var(--muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  border: 5px solid var(--border);
+  border-radius: 8px;
+}
+
+/* Static gradient border — nanobanana image is ready */
+.imageWrapNanobanana {
+  background:
+    linear-gradient(var(--muted), var(--muted)) padding-box,
+    linear-gradient(202deg, #abd0f8 6.26%, #fad87d 85.48%) border-box;
+  border: 5px solid transparent;
+}
+
+/* Spinning gradient border — nanobanana image is generating */
+.imageWrapGenerating {
+  border: none;
+  background: transparent;
+  z-index: 0;
+}
+
+.imageWrapGenerating::before {
+  content: "";
+  position: absolute;
+  z-index: -2;
+  left: 50%;
+  top: 50%;
+  width: 200vmax;
+  height: 200vmax;
+  margin-top: -100vmax;
+  margin-left: -100vmax;
+  background: conic-gradient(#abd0f8, #fad87d, #abd0f8);
+  animation: spinBorder 1.5s linear infinite;
+}
+
+.imageWrapGenerating::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 5px;
+  background: var(--muted, #f5f5f5);
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+
+.imageWrapGenerating > * {
+  position: relative;
+  z-index: 1;
+}
+
+.imageWrapGenerating .image {
+  left: 5px !important;
+  top: 5px !important;
+  right: 5px !important;
+  bottom: 5px !important;
+  width: calc(100% - 10px) !important;
+  height: calc(100% - 10px) !important;
+  border-radius: 3px;
+}
+
+@keyframes spinBorder {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.imageSparkle {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  color: #eab308;
+  z-index: 10;
+}
+
+.imageCustomerPhotoBadge {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  z-index: 11;
+  border-radius: 10px;
+  background: #fff7e1;
+  display: flex;
+  height: 31px;
+  padding: 5px 14px;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+  cursor: pointer;
+  font-size: 0.975rem;
+  font-weight: 500;
+  color: #1a1a1a;
+}
+
+.imageGeneratingBadge {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  z-index: 11;
+  border-radius: 8px;
+  background: #000;
+  color: #fff;
+  display: flex;
+  height: 26px;
+  padding: 4px 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  pointer-events: none;
+  font-size: 0.8125rem;
+  font-weight: 500;
+}
+
+.imageGeneratingSpinner {
+  animation: detailGeneratingSpin 0.8s linear infinite;
+}
+
+@keyframes detailGeneratingSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.imagePlaceholder {
+  width: 6rem;
+  height: 6rem;
+  color: var(--muted-foreground);
+}
+
+.noPhotosMessage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--muted-foreground);
+  font-size: 0.875rem;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.imageCaption {
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+  line-height: 1.5;
+}
+
+.generateButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  border-radius: var(--radius-lg, 10px);
+  border: none;
+  background: #000;
+  color: #fff;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.10);
+  cursor: pointer;
+  width: fit-content;
+  align-self: center;
+}
+
+.generateButton:hover:not(:disabled) {
+  background: #333;
+}
+
+.generateButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.generateButtonIcon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.generateButtonIconSpin {
+  width: 1rem;
+  height: 1rem;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Customer Photos section */
+.customerPhotosSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 2rem;
+}
+
+.customerPhotosTitle {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--foreground);
+}
+
+.customerPhotosSubtitle {
+  color: #737373;
+  font-size: var(--size-sm, 0.875rem);
+}
+
+.customerPhotosGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.25rem;
+  margin-top: 1rem;
+}
+
+.customerPhotosEmpty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 2.5rem 1rem;
+  background: var(--muted);
+  border-radius: 8px;
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+  text-align: center;
+}
+
+.customerPhotosEmptyIcon {
+  width: 2.5rem;
+  height: 2.5rem;
+  color: #ccc;
+}
+
+.customerPhotoCell {
+  aspect-ratio: 1;
+  background-color: var(--muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+a.customerPhotoCell {
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+a.customerPhotoCell:hover {
+  opacity: 0.85;
+}
+
+.customerPhotoImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.customerPhotoPlaceholder {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--muted-foreground);
+}
+
+/* Right column: Dish info */
+.infoSection {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.infoSection * {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* Dish name and description header */
+.dishHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.dishName {
+  font-family: var(--font-roboto-serif), "Georgia", "Times New Roman", serif;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+  color: #000;
+  margin: 0 0 0.5rem 0;
+}
+
+.dishDescription {
+  font-family: "DM Sans", var(--font-sans);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: var(--tracking-normal, 0);
+  color: #737373;
+  margin: 0;
+  align-self: stretch;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* AI Summary block */
+.aiSummaryBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.aiSummaryHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.aiSummaryTitle {
+  font-family: var(--font-sans);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #000;
+}
+
+.aiSummarySparkle {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: #eab308;
+  flex-shrink: 0;
+}
+
+.aiSummaryCard {
+  background:
+    linear-gradient(#ffffff, #ffffff) padding-box,
+    linear-gradient(202deg, #abd0f8 6.26%, #fad87d 85.48%) border-box;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  box-shadow:
+    0 2px 8px rgba(190, 227, 248, 0.15),
+    0 4px 16px rgba(251, 191, 36, 0.08);
+}
+
+.aiSummaryText {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #333333;
+  margin: 0;
+  text-align: left;
+}
+
+/* Dietary Claim section */
+.dietaryClaimSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.dietaryInsightSubtitle {
+  margin: -0.75rem 0 0.25rem 0;
+  font-size: 14px;
+  color: var(--muted-foreground, #737373);
+}
+
+.dietaryClaimNa {
+  margin: 0;
+  font-size: 14px;
+  color: #000;
+}
+
+.sectionTitleSmall {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--foreground);
+}
+
+/* Claim cards */
+.claimsList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.claimBadgeCardPair {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.claimBadgeRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.claimStatusPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #000;
+  background: none;
+  border: none;
+}
+
+.claimStatusPillIcon {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+}
+
+.claimStatusPillVerified .claimStatusPillIcon {
+  color: #22a72f;
+}
+
+.claimStatusPillWarning .claimStatusPillIcon {
+  color: #d34646;
+}
+
+.claimStatusPillInfo .claimStatusPillIcon {
+  color: #5e87cf;
+}
+
+.claimStatusPillMentioned .claimStatusPillIcon {
+  color: #6b7280;
+}
+
+.claimStatusPillVerified,
+.claimStatusPillWarning,
+.claimStatusPillInfo,
+.claimStatusPillMentioned {
+  background: none;
+  border: none;
+  color: #000;
+}
+
+.claimEvidenceBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.claimEvidenceBlock + .claimEvidenceBlock {
+  margin-top: 0.75rem;
+}
+
+.sourceLinksRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.dietaryClaimSection .claimLink {
+  border-radius: 24px;
+  padding: 0.3rem 0.6rem;
+}
+
+.claimCard {
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+}
+
+.claimCardHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.claimCardConflicting {
+  background: #fff;
+  border-color: #e5e5e5;
+}
+
+.claimCardContent {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  margin-top: 0.5rem;
+}
+
+.claimIcon {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+}
+
+.claimIconInfo {
+  color: #6b7280;
+}
+
+.claimIconWarning {
+  color: #d97706;
+}
+
+.claimIconSuccess {
+  color: #16a34a;
+}
+
+.claimContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.claimText {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 0;
+  color: #000;
+}
+
+.claimLink {
+  font-size: 0.75rem;
+  color: #000 !important;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  border-radius: var(--radius-lg, 10px);
+  background: var(--secondary, #f5f5f5);
+  padding: 0.25rem 0.5rem;
+  width: fit-content;
+  max-width: 100%;
+}
+
+.claimLink:hover {
+  text-decoration: underline;
+}
+
+.claimLinkIcon {
+  width: 0.625rem;
+  height: 0.625rem;
+  color: #2266f0;
+}
+
+/* Ingredients section */
+.ingredientsSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.ingredientsList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.ingredientRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.ingredientIcon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+}
+
+.ingredientsNa {
+  color: #000;
+  font-size: 14px;
+}
+
+.ingredientDot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.ingredientDotBeef {
+  background-color: #dc2626;
+}
+
+.ingredientDotChicken {
+  background-color: #f59e0b;
+}
+
+.ingredientDotSalmon {
+  background-color: #f97316;
+}
+
+.ingredientDotCrab {
+  background-color: #eab308;
+}
+
+.ingredientDotEgg {
+  background-color: #fde047;
+}
+
+.ingredientDotVegetable {
+  background-color: #22c55e;
+}
+
+.ingredientDotSeafood {
+  background-color: #3b82f6;
+}
+
+.ingredientDotDairy {
+  background-color: #a78bfa;
+}
+
+.ingredientDotGrain {
+  background-color: #d4a373;
+}
+
+.ingredientDotDefault {
+  background-color: #9ca3af;
+}
+
+/* Different Notes section (Reviewers Commented) – same card style as dietary claim */
+.differentNotesSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.differentNotesList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.differentNotesCard {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.875rem 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.differentNotesCard .claimContent {
+  gap: 0.75rem;
+}
+
+.differentNotesLink {
+  color: #007aff;
+}
+
+.differentNotesLink .claimLinkIcon {
+  color: #007aff;
+}
+
+/* Options section */
+.optionsSection {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.optionsNa {
+  color: #000;
+  font-size: 14px;
+}
+
+.optionGroup {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.optionLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--foreground);
+}
+
+.optionLabelIconWrap {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+}
+
+.optionLabelIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+}
+
+.optionBadges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.optionBadge {
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  height: 22px;
+  padding: 0 0.75rem;
+  font-size: 0.75rem;
+  border-radius: 10px;
+  border: 1px solid #e5e5e5;
+  background: #fff;
+  color: var(--foreground);
+}
+
+/* Badge colors for dietary labels */
+.badge {
+  border-radius: 9999px;
+  font-weight: 400;
+  border: 1px solid var(--border);
+  padding: 0.125rem 1rem;
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.nameRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.price {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.options {
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+}
+
+.options p {
+  color: var(--muted-foreground);
+}
+
+.options span:first-child {
+  text-transform: capitalize;
+}
+
+.description {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--foreground);
+}
+
+/* Legacy block styles (for compatibility) */
+.block {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.blockTitle {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.blockText {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--foreground);
+}
+
+.ingredientsWrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem 1.5rem;
+}
+
+.ingredientGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.ingredientLabel {
+  font-size: 0.625rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted-foreground);
+  margin-bottom: 0.25rem;
+}
+
+.ingredientListText {
+  font-size: 0.875rem;
+}
+
+.claimTitle {
+  font-weight: 700;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.claimTextRelaxed {
+  line-height: 1.6;
+}
+
+/* Real reviews section (legacy) - now moved to left column */
+.reviewsSection {
+  margin-top: 6rem;
+}
+
+.reviewsTitle {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.reviewsLoading {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--muted-foreground);
+  font-size: 14px;
+}
+
+.reviewsLoadingIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+  animation: spin 0.8s linear infinite;
+}
+
+.reviewsError {
+  margin: 0;
+  font-size: 14px;
+  color: var(--destructive, #dc2626);
+}
+
+.reviewsNa {
+  margin: 0;
+  font-size: 14px;
+  color: var(--muted-foreground, #71717a);
+}
+
+.reviewsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.loadMoreReviewsButton {
+  display: block;
+  margin-top: 1.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 40px;
+  border: var(--border-width, 1px) solid var(--border, #e5e5e5);
+  background: var(--background, #fff);
+
+  /* M3/Elevation Light/3 */
+  box-shadow:
+    0 4px 8px 3px rgba(0, 0, 0, 0.15),
+    0 1px 3px 0 rgba(0, 0, 0, 0.3);
+}
+
+.loadMoreReviewsButton:hover {
+  background: var(--muted, #f5f5f5);
+  border-color: var(--border);
+  box-shadow:
+    0 6px 10px 4px rgba(0, 0, 0, 0.2),
+    0 2px 4px 0 rgba(0, 0, 0, 0.3);
+}
+
+.reviewCard {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  border: 1px solid var(--border, #e5e5e5);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.reviewText {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #000;
+}
+
+.reviewDate {
+  margin: 0;
+  font-size: 14px;
+  color: #737373;
+}
+
+.collageGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 0.25rem;
+  aspect-ratio: 1;
+  background-color: var(--muted);
+}
+
+.collageCell {
+  background-color: var(--muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.collageImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.collagePlaceholder {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--muted-foreground);
+}
+
+/* Suspense fallback */
+.fallback {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fallbackIcon {
+  width: 2.5rem;
+  height: 2.5rem;
+  color: var(--foreground);
+  animation: detailSpin 0.8s linear infinite;
+}
+
+@keyframes detailSpin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

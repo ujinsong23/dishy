@@ -1,0 +1,801 @@
+/* Results list page – same width as Detail page/wrapper */
+.page {
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  max-width: 90rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 3rem 0.5rem 2rem;
+  background-color: var(--color-light-bg);
+  color: var(--color-brand-primary);
+  font-family: var(--font-dm-sans);
+  overflow-x: hidden;
+}
+
+.wrapper {
+  max-width: 90rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 0.5rem 2rem;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.loadingWrap {
+  flex: 1;
+  min-height: 0;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header {
+  margin-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Results View Header */
+.resultsView {
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.topNav {
+  margin-bottom: 2rem;
+}
+
+/* Change Restaurant Button Wrapper */
+.changeRestaurantWrap {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: var(--font-dm-sans);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-brand-primary);
+}
+
+.backButtonCircle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid #e5e5e5;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  color: inherit;
+}
+
+.backButtonCircle:hover {
+  background-color: #f5f5f5;
+  border-color: #d4d4d4;
+}
+
+.viewHeader {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.viewTitle {
+  font-size: 2.25rem;
+  font-family: var(--font-roboto-serif);
+  font-weight: 400;
+  color: var(--color-brand-primary);
+  margin-bottom: 0.75rem;
+}
+
+.viewTitle em {
+  font-family: var(--font-roboto-serif);
+  font-style: italic;
+  font-weight: 600;
+}
+
+.viewSubtitle {
+  font-size: 1rem;
+  color: var(--color-brand-secondary);
+  font-family: var(--font-dm-sans);
+  font-weight: 400;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+/* Dishy Picks Section */
+.dishyPicksSection {
+  margin-bottom: 4rem;
+  padding: 1.5rem;
+  position: relative;
+  width: 100%;
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.05),
+    0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  background:
+    linear-gradient(#ffffff, #ffffff) padding-box,
+    linear-gradient(202deg, #abd0f8 6.26%, #fad87d 85.48%) border-box;
+  border: 2px solid transparent;
+  border-radius: 12px;
+}
+
+.dishyHeaderRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 0;
+}
+
+.dishyTitleBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  flex: 1;
+}
+
+.dishyIcon {
+  width: 48px;
+  height: 48px;
+  color: #ecc94b;
+  flex-shrink: 0;
+}
+
+.dishyTitle {
+  font-family: var(--font-dm-sans);
+  font-weight: 700;
+  font-size: 1.125rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dishyContent {
+  font-family: var(--font-dm-sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #333;
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.dishyContent b {
+  font-weight: 600;
+}
+
+.dishyPickLink {
+  color: var(--color-brand-primary);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.dishyPickLink:hover {
+  text-decoration: none;
+}
+
+/* Nanobanana image ready banner */
+.nanobananaReadyBanner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  background: #e8f4ea;
+  border: 1px solid #22a72f;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  color: #1a1a1a;
+}
+
+.nanobananaReadyBannerLink {
+  font-weight: 600;
+  color: var(--color-brand-primary);
+  text-decoration: underline;
+}
+
+.nanobananaReadyBannerLink:hover {
+  text-decoration: none;
+}
+
+.nanobananaReadyBannerDismiss {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: transparent;
+  font-size: 1.25rem;
+  line-height: 1;
+  color: #666;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.nanobananaReadyBannerDismiss:hover {
+  background: rgba(0, 0, 0, 0.06);
+  color: #1a1a1a;
+}
+
+/* Menu Glossary Collapsible */
+.glossaryTrigger {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-dm-sans);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-brand-primary);
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.glossaryTrigger:hover {
+  text-decoration: underline;
+}
+
+.glossaryContent {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.glossaryItem {
+  font-size: 0.875rem;
+  font-family: var(--font-dm-sans);
+  line-height: 1.5;
+}
+
+.glossaryTerm {
+  font-weight: 700;
+  color: var(--color-brand-primary);
+}
+
+.glossaryDef {
+  color: var(--color-brand-secondary);
+}
+
+/* ResultsView filters & grid */
+.filtersRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  /* Align bottom to match dietary options title baseline usually, but here inputs/tags differ height */
+  /* Let's try separate columns/groups logic if needed, but flex-wrap is safe */
+  gap: 2rem;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.searchWrap {
+  flex: 0 0 auto;
+  width: 300px;
+}
+
+.searchInputWrap {
+  position: relative;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1rem;
+  height: 1rem;
+  color: var(--muted-foreground);
+  transition: color 0.2s;
+}
+
+.searchInputWrap:focus-within .searchIcon {
+  color: var(--foreground);
+}
+
+.searchInput {
+  padding-left: 2.5rem;
+  height: 2.25rem;
+  border-radius: 4px;
+  border: 1px solid #e5e5e5;
+  font-family: var(--font-dm-sans);
+  background-color: white;
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: var(--foreground);
+  box-shadow: none;
+}
+
+/* Dietary Options Group */
+.dietaryGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.dietaryLabel {
+  font-size: 0.875rem;
+  font-weight: 500;
+  /* Regular or Medium */
+  font-family: var(--font-dm-sans);
+  /* Changed to DM Sans */
+  color: var(--color-brand-primary);
+}
+
+.dietaryOptionsWrap {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+/* Dietary Tags Styling */
+.dietaryBadge {
+  border-radius: 9999px;
+  border: 1px solid #e5e5e5;
+  padding: 0.125rem 0.625rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  background-color: white;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-family: var(--font-dm-sans);
+  color: #333;
+  height: 28px;
+}
+
+.dietaryBadge:hover {
+  border-color: #d4d4d4;
+  background-color: #f9f9f9;
+}
+
+/* Selected state: Black background, white text */
+.dietaryBadge[data-selected="true"] {
+  background-color: #000000;
+  color: #ffffff;
+  border-color: #000000;
+}
+
+.dietaryBadge:hover[data-selected="true"] {
+  background-color: #333333;
+  border-color: #333333;
+}
+
+.resultsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem 2rem;
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .resultsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .resultsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1280px) {
+  .resultsGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.cardLink {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+}
+
+.cardImageWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  background-color: #e5e5e5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+  overflow: hidden;
+  border-radius: 8px;
+  border: 3px solid #e5e5e5;
+}
+
+.cardCustomerPhotoBadge {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  z-index: 10;
+  border-radius: 8px;
+  background: #fff7e1;
+  display: flex;
+  height: 28px;
+  padding: var(--py-05, 4px) var(--px-25, 12px);
+  justify-content: center;
+  align-items: center;
+  gap: var(--gap-1, 6px);
+  flex-shrink: 0;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #1a1a1a;
+}
+
+.cardGeneratingBadge {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  z-index: 11;
+  border-radius: 8px;
+  background: #000;
+  color: #fff;
+  display: flex;
+  height: 28px;
+  padding: var(--py-05, 4px) var(--px-25, 12px);
+  justify-content: center;
+  align-items: center;
+  gap: var(--gap-1, 6px);
+  flex-shrink: 0;
+  pointer-events: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.cardGeneratingSpinner {
+  animation: cardGeneratingSpin 0.8s linear infinite;
+}
+
+@keyframes cardGeneratingSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.cardImageWrapEmpty {
+  background-color: #f5f5f5;
+  position: relative;
+  border-radius: 8px;
+  border: 3px solid var(--border, #e5e5e5);
+}
+
+.cardImageWrapLoading {
+  background-color: #f5f5f5;
+  position: relative;
+  border-radius: 8px;
+  border: 3px solid var(--border, #e5e5e5);
+  animation: cardImagePulse 1.8s ease-in-out infinite;
+}
+
+@keyframes cardImagePulse {
+  0%,
+  100% {
+    background-color: #f5f5f5;
+  }
+  50% {
+    background-color: #ebebeb;
+  }
+}
+
+.cardImageLoading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-dm-sans);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #999;
+}
+
+.cardNoPhotos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-dm-sans);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #b3b3b3;
+}
+
+.cardNoPhotosIcon {
+  width: 2rem;
+  height: 2rem;
+  color: #ccc;
+}
+
+/* Static gradient border — image is ready */
+.cardImageWrapNanobanana {
+  background:
+    linear-gradient(var(--muted, #f5f5f5), var(--muted, #f5f5f5)) padding-box,
+    linear-gradient(202deg, #abd0f8 6.26%, #fad87d 85.48%) border-box;
+  border: 3px solid transparent;
+}
+
+/* Spinning gradient border — image is generating */
+.cardImageWrapGenerating {
+  border: none;
+  background: transparent;
+  z-index: 0;
+}
+
+.cardImageWrapGenerating::before {
+  content: "";
+  position: absolute;
+  z-index: -2;
+  left: 50%;
+  top: 50%;
+  width: 200vmax;
+  height: 200vmax;
+  margin-top: -100vmax;
+  margin-left: -100vmax;
+  background: conic-gradient(#abd0f8, #fad87d, #abd0f8);
+  animation: spinBorder 1.5s linear infinite;
+}
+
+.cardImageWrapGenerating::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 5px;
+  background: var(--muted, #f5f5f5);
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+
+.cardImageWrapGenerating > * {
+  position: relative;
+  z-index: 1;
+}
+
+.cardImageWrapGenerating .cardImage {
+  left: 5px !important;
+  top: 5px !important;
+  right: 5px !important;
+  bottom: 5px !important;
+  width: calc(100% - 10px) !important;
+  height: calc(100% - 10px) !important;
+  border-radius: 3px;
+}
+
+.cardImageWrapGenerating .cardGeneratingBadge {
+  position: absolute;
+  bottom: 13px;
+  right: 13px;
+  z-index: 2;
+}
+
+@keyframes spinBorder {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.cardImageSparkle {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  width: 30px;
+  height: 30px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.cardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.cardLink:hover .cardImage {
+  transform: scale(1.05);
+}
+
+.cardLink:hover .cardImageWrapGenerating .cardImage {
+  transform: none;
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.cardHeaderRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.cardTitleWrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  min-width: 0;
+}
+
+.cardIngredientIcons {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex-shrink: 0;
+}
+
+.cardIngredientIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+}
+
+.cardTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-brand-primary);
+  font-family: var(--font-dm-sans);
+}
+
+.cardPrice {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-brand-primary);
+  font-family: var(--font-dm-sans);
+}
+
+.cardDesc {
+  font-size: 0.75rem;
+  line-clamp: 2;
+  line-height: 1.4;
+  color: #666666;
+  margin-top: 0.25rem;
+  font-family: var(--font-dm-sans);
+}
+
+.cardBadges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.miniDietaryBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.625rem;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  border: 1px solid #e5e5e5;
+  background-color: white;
+  color: #333;
+  font-weight: 500;
+}
+
+/* ── More dishes from the Menu ── */
+.moreDishesSection {
+  margin-top: 4rem;
+  width: 100%;
+}
+
+.moreDishesTitle {
+  font-size: 2rem;
+  font-family: var(--font-roboto-serif);
+  font-weight: 400;
+  color: var(--color-brand-primary);
+  margin-bottom: 2rem;
+}
+
+.moreDishesTitle em {
+  font-family: var(--font-roboto-serif);
+  font-style: italic;
+  font-weight: 600;
+}
+
+.moreDishesGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .moreDishesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.moreDishesItem {
+  display: block;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid #e5e5e5;
+  text-decoration: none;
+  color: inherit;
+  transition: background-color 0.15s;
+}
+
+/* Offset every other item in the 2-col grid to create visual separation */
+@media (min-width: 640px) {
+  .moreDishesItem:nth-child(odd) {
+    padding-right: 2rem;
+  }
+  .moreDishesItem:nth-child(even) {
+    padding-left: 2rem;
+  }
+}
+
+.moreDishesRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.moreDishesInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.moreDishesNameRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.moreDishesName {
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: var(--font-dm-sans);
+  color: var(--color-brand-primary);
+  line-height: 1.3;
+}
+
+.moreDishesDesc {
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: #666;
+  margin-top: 0.25rem;
+  font-family: var(--font-dm-sans);
+}
+
+.moreDishesPrice {
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: var(--font-dm-sans);
+  color: var(--color-brand-primary);
+  flex-shrink: 0;
+  white-space: nowrap;
+}

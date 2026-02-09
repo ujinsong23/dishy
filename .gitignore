@@ -32,6 +32,7 @@ wheels/
 backend/.env
 backend/data/
 data/
+frontend/.env
 
 # Node (Frontend)
 node_modules/

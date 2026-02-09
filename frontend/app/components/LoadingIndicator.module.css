@@ -1,0 +1,48 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  background-color: #fffcf4;
+}
+
+.inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pulseRing {
+  position: absolute;
+  width: 6rem;
+  height: 6rem;
+  background: color-mix(in oklch, var(--primary) 30%, transparent);
+  border-radius: 9999px;
+  filter: blur(24px);
+}
+
+.pulseRingOuter {
+  position: absolute;
+  width: 8rem;
+  height: 8rem;
+  background: color-mix(in oklch, var(--primary) 20%, transparent);
+  border-radius: 9999px;
+  filter: blur(40px);
+}
+
+.spinnerIcon {
+  width: 4rem;
+  height: 4rem;
+  color: var(--primary);
+  stroke-width: 1.5;
+}
+
+.message {
+  margin-top: 2.5rem;
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--muted-foreground);
+  letter-spacing: 0.025em;
+}
